@@ -7,11 +7,11 @@ app.use(cors())
 
 app.use(express.json());
 
-app.use('/', proxy('http://localhost:3001',));  //products
-app.use('/coustomer', proxy('http://localhost:3000',));
-app.use('/shopping', proxy('http://localhost:3002',));
+// app.use('/', proxy('http://localhost:8001',));  //products
+app.use('/customer', proxy('http://localhost:8002',));
+// app.use('/shopping', proxy('http://localhost:3003',));
 
 
-app.listen(3004, () => {
-    console.log("Getaway is running on port 3004")
+app.listen(8000, () => {
+    console.log("Getaway is running on port 8000")
 })
