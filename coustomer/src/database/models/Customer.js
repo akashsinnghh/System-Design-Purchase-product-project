@@ -12,17 +12,34 @@ const CustomerSchema = new Schema({
     ],
     cart: [
         {
-          product: { type: Schema.Types.ObjectId, ref: 'product', require: true},
+          product: {
+            _id: { type: String, required: true},
+            name: { type: String },
+            banner: { type: String },
+            price: { type: Number }
+          },
           unit: { type: Number, require: true}
         }
     ],
     wishlist:[
         { 
-            type: Schema.Types.ObjectId, ref: 'product', require: true
+            product: {
+                _id: { type: String, required: true},
+                name: { type: String },
+                description: { type: String },
+                banner: { type: String },
+                available: { type: Boolean },
+                price: { type: Number }
+              },
+              unit: { type: Number, require: true}
         }
     ],
     orders: [ 
-        { type: Schema.Types.ObjectId, ref: 'order', require: true }
+        {
+            _id: { type: String, required: true},
+            amount: { type: String, required: true},
+            date: { type: Date, default: Date.now() },
+        }
     ]
 },{
     toJSON: {
