@@ -74,6 +74,20 @@ class ProductService {
             throw new APIError('Data Not found')
         }
     }
+
+    async GetProductPayload( userid, {productId, qty}, event) {
+
+        const product = await this.repository.FindById(productId);
+        if (product) {
+           const payload = {
+            event: event,
+            data: { userid, productId, qty}
+           }
+           return FormateData(payload);
+        } else {
+            FormateData({error: "No Product Available"})
+        }
+    }
      
 }
 
